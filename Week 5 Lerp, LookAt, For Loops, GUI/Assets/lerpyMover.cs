@@ -3,10 +3,10 @@ using System.Collections;
 
 public class lerpyMover : MonoBehaviour {
 	private Transform startPoint, endPoint;
-	public float percentage;
-	public float speed = 2;
+	public float percentage = .1f;
+	public float speed = 20;
 
-	private int direction;
+	private int direction = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +35,9 @@ public class lerpyMover : MonoBehaviour {
 			percentage = Mathf.Clamp(percentage, 0, 1);
 		}
 
+	}
+	void OnCollisionEnter() {
+		//not a code conflict
 	}
 }
 
