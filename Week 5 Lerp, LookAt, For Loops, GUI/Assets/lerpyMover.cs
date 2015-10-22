@@ -3,10 +3,10 @@ using System.Collections;
 
 public class lerpyMover : MonoBehaviour {
 	private Transform startPoint, endPoint;
-	public float percentage;
+	public float percentage = .2f;
 	public float speed = 2;
 
-	private int direction;
+	private int direction = -1;
 
 	// Use this for initialization
 	void Start () {
