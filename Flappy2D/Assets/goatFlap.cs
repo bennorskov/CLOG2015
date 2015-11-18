@@ -22,7 +22,7 @@ public class goatFlap : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D other) {
 		if (!other.collider.CompareTag("Wall")) {
-			//showGameOver();
+			showGameOver();
 		}
 	}
 	void showGameOver() {
