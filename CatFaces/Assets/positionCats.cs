@@ -12,7 +12,7 @@ public class positionCats : MonoBehaviour {
 		cats = GetComponentsInChildren<Transform>();
 		numCats = cats.Length-1; //Length - 1 because it grabs the transform of this object as well
 		float rotationOffset = Mathf.PI * 2 / numCats;
-		float distance = 5f;
+		float distance = 3f;
 		for (int i = 0; i<cats.Length; i++) {
 			// # around the circle determined by for loop
 			// + PI/2 (90º) to start with one on top
