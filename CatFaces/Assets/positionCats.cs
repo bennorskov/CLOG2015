@@ -4,21 +4,22 @@ using System.Collections;
 public class positionCats : MonoBehaviour {
 
 	Transform[] cats;
-
+	int numCats = 10;
 	float rotateTo;
 	public float rotationSpeed = 1f;
 
 	void Start () {
 		cats = GetComponentsInChildren<Transform>();
-		float rotationOffset = Mathf.PI * 2 / 5;
-		float distance = 3f;
+		numCats = cats.Length-1; //Length - 1 because it grabs the transform of this object as well
+		float rotationOffset = Mathf.PI * 2 / numCats;
+		float distance = 5f;
 		for (int i = 0; i<cats.Length; i++) {
 			// # around the circle determined by for loop
 			// + PI/2 (90º) to start with one on top
 			if (cats[i].gameObject.name != "Holder") {
 				cats[i].localPosition = new Vector3( Mathf.Cos(rotationOffset*i + Mathf.PI/2) * distance, Mathf.Sin(rotationOffset*i + Mathf.PI/2) * distance, 0);
-				cats[i].GetComponent<clickCat>().catID = 5-i; 
-				//using 5 - i because the rotations get setup oposite the order in which the cats are displayed
+				cats[i].GetComponent<clickCat>().catID = numCats-i; 
+				//using numCats - i because the rotations get setup oposite the order in which the cats are displayed
 			}
 		}
 	}
@@ -36,11 +37,12 @@ public class positionCats : MonoBehaviour {
 			rotateFrom -= 360;
 			//if the face is on the right side and needs to rotate the parent right but is beyond 360
 		}
-		transform.rotation = Quaternion.Euler ( new Vector3( 0, 0, Mathf.Lerp(rotateFrom, rotateToFix, Time.deltaTime*rotationSpeed)) );
+		transform.rotation = Quaternion.Euler ( new Vector3( 0,0, Mathf.Lerp(rotateFrom, rotateToFix, Time.deltaTime*rotationSpeed)));
+
 	}
 
 	public void rotate(int _catID) {
-		rotateTo = 360/5 * _catID;
+		rotateTo = 360/numCats * _catID;
 		//360 is total
 		//divided by 5 is the space between each one.
 		//multiplied by the id of the cat's face in order to get the rotation we're aiming at.
