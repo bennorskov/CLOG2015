@@ -7,7 +7,6 @@ public class positionCats : MonoBehaviour {
 
 	float rotateTo;
 	public float rotationSpeed = 1f;
-	float amountToRotate;
 
 	void Start () {
 		cats = GetComponentsInChildren<Transform>();
@@ -27,7 +26,7 @@ public class positionCats : MonoBehaviour {
 	void Update () {
 		//these next few lines are to fix the 360 -> 0 flip. 
 		float rotateFrom = transform.rotation.eulerAngles.z;
-		float rotateToFix = rotateTo;
+		float rotateToFix = rotateTo; //this helps with the 360 -> 0 flip
 
 		if (rotateTo - transform.rotation.eulerAngles.z > 180) {
 			rotateToFix = rotateTo - 360;

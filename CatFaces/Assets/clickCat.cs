@@ -4,6 +4,7 @@ using System.Collections;
 public class clickCat : MonoBehaviour {
 	public int catID;
 	void OnMouseDown() {
+		//send message to parent with info on how to rotate
 		SendMessageUpwards("rotate", catID );
 	}
 	void Update() {
